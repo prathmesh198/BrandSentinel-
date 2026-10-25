@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrandSentinel AI</title><link rel="icon" href="assets/logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<section id="landing">
+<nav class="lnav"><div class="brand"><img src="assets/logo.svg" alt="">BrandSentinel AI</div><div><button class="btn ghost" data-login>Login</button> <button class="btn primary" data-login>Get Started</button></div></nav>
+<div class="hero"><div id="heroText"><span class="chip">AI-Powered Brand Governance</span>
+<h1>Keep Every Brand Message <span class="grad">On-Brand.</span></h1>
+<p>AI-powered content checking against your company's approved brand guidelines, before anything is published.</p>
+<button class="btn primary" data-target="analyze">Analyze Content →</button> <button class="btn outline" data-target="assistant">Try AI Assistant</button></div>
+<div class="card scorecard" id="heroCard"><b>Brand Analysis</b><div class="ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="trk"/><circle cx="50" cy="50" r="42" class="bar" stroke-dasharray="264" stroke-dashoffset="40"/></svg><span>85<small>/100</small></span></div><span class="badge warn">WARNING</span>
+<ul class="issues"><li>🔴 Logo modification</li><li>🔴 Tone mismatch</li><li>🟠 Incorrect terminology</li></ul></div></div>
+<div class="features"><div class="card feat"><i>⚙</i><b>AI-Powered Analysis</b><p>Guideline-based content evaluation</p></div><div class="card feat"><i>▣</i><b>Brand Consistency</b><p>Keep your brand message consistent</p></div><div class="card feat"><i>⏱</i><b>Save Time</b><p>Automate manual reviews</p></div><div class="card feat"><i>♥</i><b>Better Engagement</b><p>Build trust with on-brand content</p></div></div>
+<div id="loginWrap" hidden><form class="card login" id="loginForm" novalidate><h2>Welcome back</h2><p class="muted">Demo sign-in. No real authentication is used.</p>
+<label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="sarah@acme.com">
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters">
+<p class="err" id="loginError" role="alert"></p><button class="btn primary full" type="submit">Get Started</button></form></div></section>
+
+<div id="app" hidden>
+<aside id="side"><div class="brand"><img src="assets/logo.svg" alt="">BrandSentinel AI</div><nav id="nav">
+<button data-go="dashboard">▦ Dashboard</button><button data-go="analyze">✎ Analyze Content</button><button data-go="guidelines">▤ Guidelines</button><button data-go="assistant">💬 AI Assistant</button><button data-go="history">↺ History</button><button data-go="settings">⚙ Settings</button></nav></aside>
+<div class="main"><header class="top"><button class="btn ghost menu" id="menuBtn" aria-label="Menu">☰</button><input id="gSearch" class="search" placeholder="Search analyses…" aria-label="Search analyses">
+<div class="rel"><button class="btn ghost" id="bellBtn" aria-label="Notifications">🔔<span class="dotn"></span></button><div class="pop card" id="bellPop" hidden></div></div>
+<div class="rel"><button class="user" id="userBtn"><span class="av" id="av">SJ</span><span><b id="uName">Sarah Johnson</b><small>Admin</small></span></button><div class="pop card" id="userPop" hidden><button data-go="settings">Settings</button><button id="logout">Log out</button></div></div></header>
+<main>
+<section class="screen" id="s-dashboard"><h2>Dashboard</h2><p class="muted">Overview of your brand analysis activity.</p><div class="grid4" id="stats"></div>
+<div class="card"><div class="row"><h3>Recent Analyses</h3><button class="btn outline sm" data-go="history">View All →</button></div><div class="scroll"><table><thead><tr><th>Content Name</th><th>Content Type</th><th>Brand Score</th><th>Status</th><th>Date</th><th>Action</th></tr></thead><tbody id="recent"></tbody></table></div></div></section>
+
+<section class="screen" id="s-analyze"><h2>Analyze Content</h2><p class="muted">Upload content or paste text/URL. Results are simulated demo output.</p><div class="two">
+<div class="card"><div class="tabs" id="modes"><button class="on" data-mode="file">File</button><button data-mode="text">Text</button><button data-mode="url">URL</button></div>
+<div id="m-file"><div class="drop" id="drop" tabindex="0" role="button" aria-label="Upload file"><b>⬆ Drag &amp; drop your content here</b><span>or click to browse</span><small>PDF, DOCX, TXT, PNG, JPG, WEBP</small><em id="fname"></em></div><input type="file" id="file" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.webp" hidden><button class="btn outline sm" id="browse">Browse Files</button></div>
+<div id="m-text" hidden><label for="txt">Content text</label><textarea id="txt" rows="6" placeholder="Paste your copy here…"></textarea></div>
+<div id="m-url" hidden><label for="url">Content URL</label><input id="url" type="url" placeholder="https://example.com/page"></div>
+<div class="two sm"><div><label for="ctype">Content type</label><select id="ctype"><option>Image</option><option>Web</option><option>PDF</option><option>Text</option></select></div><div><label for="chan">Channel</label><select id="chan"><option>Instagram</option><option>Website</option><option>Email</option><option>Print</option></select></div></div>
+<p class="err" id="aErr" role="alert"></p><button class="btn primary full" id="runBtn">Analyze Content →</button></div>
+<div class="card" id="results"><div class="empty">No analysis yet. Submit content to see a simulated report.</div></div></div></section>
+
+<section class="screen" id="s-guidelines"><div class="row"><div><h2>Brand Guidelines</h2><p class="muted">Manage your brand knowledge base.</p></div><button class="btn primary" id="upG">+ Upload Guideline</button></div><input type="file" id="gFile" accept=".pdf,.docx,.txt" hidden>
+<div class="grid4" id="gCards"></div><div class="card"><div class="row"><h3>Guideline Documents</h3><span class="badge ok" id="kb">● Knowledge Base Updated</span></div><div class="scroll"><table><thead><tr><th>Document Name</th><th>Type</th><th>Size</th><th>Last Updated</th><th>Actions</th></tr></thead><tbody id="docs"></tbody></table></div></div></section>
+
+<section class="screen" id="s-assistant"><h2>AI Brand Assistant</h2><p class="muted"><span class="badge info">Demo responses, not live AI</span></p>
+<div class="card chat"><div id="msgs" aria-live="polite"></div><div class="sugg" id="sugg"></div><form id="chatForm" class="row"><input id="chatIn" placeholder="Ask about your brand guidelines…" aria-label="Message"><button class="btn primary" type="submit">Send ➤</button></form></div></section>
+
+<section class="screen" id="s-history"><h2>Analysis History</h2><p class="muted">View and manage your content analysis history.</p>
+<div class="row"><div class="chips" id="filters"><button class="on" data-f="All">All</button><button data-f="Approved">Approved</button><button data-f="Warning">Warning</button><button data-f="Disapproved">Disapproved</button></div><div><input id="hSearch" class="search" placeholder="Search content…" aria-label="Search history"> <button class="btn outline" id="csv">Export CSV</button></div></div>
+<div class="card"><div class="scroll"><table><thead><tr><th>Content</th><th>Score</th><th>Status</th><th>Reviewer</th><th>Date</th><th>Action</th></tr></thead><tbody id="hBody"></tbody></table></div><div class="row"><span class="muted" id="hInfo"></span><div class="pager" id="pager"></div></div></div></section>
+
+<section class="screen" id="s-settings"><h2>Settings</h2><p class="muted">Manage your company, AI preferences and account settings.</p><div class="grid3">
+<div class="card"><h3>Company Profile</h3><label for="co">Company Name</label><input id="co"><label>Logo</label><div class="row l"><div class="logoPrev" id="logoPrev">ACME</div><button class="btn outline sm" id="chLogo">Change Logo</button><input type="file" id="logoF" accept="image/*" hidden></div><button class="btn primary full save">Save Changes</button></div>
+<div class="card"><h3>AI Settings</h3><label>Brand strictness</label><div class="radios" id="strict"><label><input type="radio" name="st" value="Strict"> Strict</label><label><input type="radio" name="st" value="Moderate"> Moderate</label><label><input type="radio" name="st" value="Flexible"> Flexible</label></div>
+<label class="sw"><input type="checkbox" id="auto" role="switch"> Automatic analysis</label><label class="sw"><input type="checkbox" id="human" role="switch"> Human review required</label><button class="btn primary full save">Save Changes</button></div>
+<div class="card"><h3>Account</h3><label for="nm">Name</label><input id="nm"><label for="em">Email</label><input id="em" type="email"><label for="pwd">Password</label><input id="pwd" type="password" value="••••••••" disabled><button class="btn outline sm" id="chPw">Change Password</button><button class="btn primary full save">Save Changes</button></div></div></section>
+</main></div></div>
+<div id="toast" role="status"></div><div id="modal" hidden><div class="card mbox"><div class="row"><h3 id="mT"></h3><button class="btn ghost" id="mX" aria-label="Close">✕</button></div><div id="mB"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+<script src="js/app.js"></script><script src="js/analyze.js"></script><script src="js/guidelines.js"></script><script src="js/assistant.js"></script><script src="js/history.js"></script><script src="js/settings.js"></script><script src="js/dashboard.js"></script><script>BS.init()</script></body></html>
